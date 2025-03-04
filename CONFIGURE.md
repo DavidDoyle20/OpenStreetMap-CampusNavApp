@@ -10,15 +10,15 @@ Many settings are available in `config/settings.yml`. You can customize your ins
 
 Your installation comes with no geographic data loaded. You can either create new data using one of the editors (iD, JOSM etc) or by loading an OSM extract.
 
-After installing but before creating any users or data, import an extract with [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis) and the [``--write-apidb``](https://wiki.openstreetmap.org/wiki/Osmosis/Detailed_Usage#--write-apidb_.28--wd.29) task.
+After installing but before creating any users or data, import an extract with [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis) and the [`--write-apidb`](https://wiki.openstreetmap.org/wiki/Osmosis/Detailed_Usage#--write-apidb_.28--wd.29) task.
 
 ```
-osmosis --read-pbf greater-london-latest.osm.pbf \
+osmosis --read-pbf campus.osm.pbf \
   --write-apidb host="localhost" database="openstreetmap" \
   user="openstreetmap" password="" validateSchemaVersion="no"
 ```
 
-Loading an apidb database with Osmosis is about **twenty** times slower than loading the equivalent data with osm2pgsql into a rendering database. [``--log-progress``](https://wiki.openstreetmap.org/wiki/Osmosis/Detailed_Usage#--log-progress_.28--lp.29) may be desirable for status updates.
+Loading an apidb database with Osmosis is about **twenty** times slower than loading the equivalent data with osm2pgsql into a rendering database. [`--log-progress`](https://wiki.openstreetmap.org/wiki/Osmosis/Detailed_Usage#--log-progress_.28--lp.29) may be desirable for status updates.
 
 To be able to edit the data you have loaded, you will need to use this [yet-to-be-written script](https://github.com/openstreetmap/openstreetmap-website/issues/282).
 
@@ -54,25 +54,25 @@ $ bundle exec rails console
 
 There are two built-in applications which communicate via the API, and therefore need to be registered as OAuth 2 applications. These are:
 
-* iD
-* The website itself (for the Notes functionality)
+- iD
+- The website itself (for the Notes functionality)
 
 For iD, do the following:
 
-* Go to "[OAuth 2 applications](http://localhost:3000/oauth2/applications)" on the My settings page.
-* Click on "Register new application".
-* Unless you have set up alternatives, use Name: "Local iD" and Redirect URIs: "http://localhost:3000"
-* Check boxes for the following Permissions
-  * 'Read user preferences'
-  * 'Modify user preferences'
-  * 'Modify the map'
-  * 'Read private GPS traces'
-  * 'Upload GPS traces'
-  * 'Modify notes'
-* On the next page, copy the "Client ID"
-* Edit config/settings.local.yml in your rails tree
-* Add the "id_application" configuration with the "Client ID" as the value
-* Restart your rails server
+- Go to "[OAuth 2 applications](http://localhost:3000/oauth2/applications)" on the My settings page.
+- Click on "Register new application".
+- Unless you have set up alternatives, use Name: "Local iD" and Redirect URIs: "http://localhost:3000"
+- Check boxes for the following Permissions
+  - 'Read user preferences'
+  - 'Modify user preferences'
+  - 'Modify the map'
+  - 'Read private GPS traces'
+  - 'Upload GPS traces'
+  - 'Modify notes'
+- On the next page, copy the "Client ID"
+- Edit config/settings.local.yml in your rails tree
+- Add the "id_application" configuration with the "Client ID" as the value
+- Restart your rails server
 
 An example excerpt from settings.local.yml:
 
@@ -85,17 +85,17 @@ id_application: "Snv…OA0"
 
 To allow [Notes](https://wiki.openstreetmap.org/wiki/Notes) and changeset discussions to work, follow a similar process, this time registering an OAuth 2 application for the web site:
 
-* Go to "[OAuth 2 applications](http://localhost:3000/oauth2/applications)" on the My settings page.
-* Click on "Register new application".
-* Use Name: "OpenStreetMap Web Site" and Redirect URIs: "http://localhost:3000"
-* Check boxes for the following Permissions
-  * 'Modify the map'
-  * 'Modify notes'
-* On the next page, copy the "Client Secret" and "Client ID"
-* Edit config/settings.local.yml in your rails tree
-* Add the "oauth_application" configuration with the "Client ID" as the value
-* Add the "oauth_key" configuration with the "Client Secret" as the value
-* Restart your rails server
+- Go to "[OAuth 2 applications](http://localhost:3000/oauth2/applications)" on the My settings page.
+- Click on "Register new application".
+- Use Name: "OpenStreetMap Web Site" and Redirect URIs: "http://localhost:3000"
+- Check boxes for the following Permissions
+  - 'Modify the map'
+  - 'Modify notes'
+- On the next page, copy the "Client Secret" and "Client ID"
+- Edit config/settings.local.yml in your rails tree
+- Add the "oauth_application" configuration with the "Client ID" as the value
+- Add the "oauth_key" configuration with the "Client Secret" as the value
+- Restart your rails server
 
 An example excerpt from settings.local.yml:
 
@@ -108,7 +108,7 @@ oauth_key: "eRHPm4GtEnw9ovB1Iw7EcCLGtUb66bXbAAspv3aJxlI"
 
 ## Troubleshooting
 
-Rails has its own log.  To inspect the log, do this:
+Rails has its own log. To inspect the log, do this:
 
 ```
 tail -f log/development.log
@@ -120,9 +120,9 @@ If you have more problems, please ask on the [rails-dev@openstreetmap.org mailin
 
 If your installation stops working for some reason:
 
-* Sometimes gem dependencies change. To update go to your `openstreetmap-website` directory and run ''bundle install'' as root.
+- Sometimes gem dependencies change. To update go to your `openstreetmap-website` directory and run ''bundle install'' as root.
 
-* The OSM database schema is changed periodically and you need to keep up with these improvements. Go to your `openstreetmap-website` directory and run:
+- The OSM database schema is changed periodically and you need to keep up with these improvements. Go to your `openstreetmap-website` directory and run:
 
 ```
 bundle exec rails db:migrate
@@ -140,8 +140,8 @@ For information on contributing changes to the codes, see [CONTRIBUTING.md](CONT
 
 If you want to deploy `openstreetmap-website` for production use, you'll need to make a few changes.
 
-* It's not recommended to use `rails server` in production. Our recommended approach is to use [Phusion Passenger](https://www.phusionpassenger.com/). Instructions are available for [setting it up with most web servers](https://www.phusionpassenger.com/documentation_and_support#documentation).
-* Passenger will, by design, use the Production environment and therefore the production database - make sure it contains the appropriate data and user accounts.
-* The included version of the map call is quite slow and eats a lot of memory. You should consider using [CGIMap](https://github.com/zerebubuth/openstreetmap-cgimap) instead.
-* Make sure you generate the i18n files and precompile the production assets: `RAILS_ENV=production rails i18n:js:export assets:precompile`
-* Make sure the web server user as well as the rails user can read, write and create directories in `tmp/`.
+- It's not recommended to use `rails server` in production. Our recommended approach is to use [Phusion Passenger](https://www.phusionpassenger.com/). Instructions are available for [setting it up with most web servers](https://www.phusionpassenger.com/documentation_and_support#documentation).
+- Passenger will, by design, use the Production environment and therefore the production database - make sure it contains the appropriate data and user accounts.
+- The included version of the map call is quite slow and eats a lot of memory. You should consider using [CGIMap](https://github.com/zerebubuth/openstreetmap-cgimap) instead.
+- Make sure you generate the i18n files and precompile the production assets: `RAILS_ENV=production rails i18n:js:export assets:precompile`
+- Make sure the web server user as well as the rails user can read, write and create directories in `tmp/`.

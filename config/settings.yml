@@ -1,6 +1,6 @@
 # The server protocol and host
-server_protocol: "http"
-server_url: "openstreetmap.example.com"
+server_protocol: "https"
+server_url: "osm.uwmnav.dedyn.io"
 # Publisher
 #publisher_url: ""
 # The generator
@@ -66,7 +66,8 @@ api_timeout: 300
 # Timeout for web pages in seconds
 web_timeout: 30
 # Periods (in hours) which are allowed for user blocks
-user_block_periods: [0, 1, 3, 6, 12, 24, 48, 96, 168, 336, 731, 4383, 8766, 87660]
+user_block_periods:
+  [0, 1, 3, 6, 12, 24, 48, 96, 168, 336, 731, 4383, 8766, 87660]
 # Account deletion cooldown period (in hours) since last changeset close; null to disable, 0 to make sure there aren't any open changesets when the deletion happens
 user_account_deletion_delay: null
 # Rate limit for message sending
