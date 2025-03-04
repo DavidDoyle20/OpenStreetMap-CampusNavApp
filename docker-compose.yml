@@ -2,9 +2,9 @@ version: "3"
 
 services:
   web:
+    image: ghcr.io/daviddoyle20/openstreetmap-web-campusnavapp:latest
     build:
       context: .
-      image: ghcr.io/DavidDoyle20/openstreetmap-web-campusnavapp:latest
     environment:
       PIDFILE: /tmp/pids/server.pid
     volumes:
@@ -24,10 +24,10 @@ services:
       - db
 
   db:
+    image: ghcr.io/daviddoyle20/openstreetmap-db-campusnavapp:latest
     build:
       context: .
       dockerfile: docker/postgres/Dockerfile
-      image: ghcr.io/DavidDoyle20/openstreetmap-db-campusnavapp:latest
     ports:
       - "54321:5432"
     environment:
