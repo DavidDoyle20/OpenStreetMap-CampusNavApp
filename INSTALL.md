@@ -6,8 +6,8 @@ If you want to deploy the software for your own project, then see the notes at t
 You can install the software directly on your machine, which is the traditional and probably best-supported approach. However, there
 are two alternatives which make it easier to get a consistent development environment and may avoid installation difficulties:
 
-* **Vagrant** This installs the software into a virtual machine. For Vagrant instructions see [VAGRANT.md](VAGRANT.md).
-* **Docker** This installs the software using containerization. For Docker instructions see [DOCKER.md](DOCKER.md).
+- **Vagrant** This installs the software into a virtual machine. For Vagrant instructions see [VAGRANT.md](VAGRANT.md).
+- **Docker** This installs the software using containerization. For Docker instructions see [DOCKER.md](DOCKER.md).
 
 These instructions are based on Ubuntu 24.04 LTS, which is the platform used by the OSMF servers.
 The instructions also work, with only minor amendments, for all other current Ubuntu releases, Fedora and MacOSX
@@ -22,10 +22,10 @@ of packages required before you can get the various gems installed.
 
 ## Minimum requirements
 
-* Ruby 3.2+
-* PostgreSQL 13+
-* Bundler (see note below about [developer Ruby setup](#rbenv))
-* Javascript Runtime
+- Ruby 3.2+
+- PostgreSQL 13+
+- Bundler (see note below about [developer Ruby setup](#rbenv))
+- Javascript Runtime
 
 These can be installed on Ubuntu 24.04 or later with:
 
@@ -73,9 +73,9 @@ For MacOSX, you will need XCode installed from the Mac App Store; OS X 10.7 (Lio
 
 Installing PostgreSQL:
 
-* Install Postgres.app from https://postgresapp.com/
-* Make sure that you've initialized and started Postgresql from the app (there should be a little elephant icon in your systray).
-* Add PostgreSQL to your path, by editing your profile:
+- Install Postgres.app from https://postgresapp.com/
+- Make sure that you've initialized and started Postgresql from the app (there should be a little elephant icon in your systray).
+- Add PostgreSQL to your path, by editing your profile:
 
 `nano ~/.profile`
 
@@ -87,10 +87,10 @@ After this, you may need to start a new shell window, or source the profile agai
 
 Installing other dependencies:
 
-* Install Homebrew from https://brew.sh/
-* Install the latest version of Ruby: `brew install ruby`
-* Install other dependencies: `brew install libxml2 gd yarn pngcrush optipng pngquant jhead jpegoptim gifsicle svgo advancecomp vips`
-* Install Bundler: `gem install bundler` (you might need to `sudo gem install bundler` if you get an error about permissions - or see note below about [developer Ruby setup](#rbenv))
+- Install Homebrew from https://brew.sh/
+- Install the latest version of Ruby: `brew install ruby`
+- Install other dependencies: `brew install libxml2 gd yarn pngcrush optipng pngquant jhead jpegoptim gifsicle svgo advancecomp vips`
+- Install Bundler: `gem install bundler` (you might need to `sudo gem install bundler` if you get an error about permissions - or see note below about [developer Ruby setup](#rbenv))
 
 You will need to tell `bundler` that `libxml2` is installed in a Homebrew location. If it uses the system-installed one then you will get errors installing the `libxml-ruby` gem later on<a name="macosx-bundle-config"></a>.
 
@@ -121,7 +121,6 @@ git clone --depth=1 https://github.com/openstreetmap/openstreetmap-website.git
 ```
 
 If you want to add in the full history later on, perhaps to run `git blame` or `git log`, run `git fetch --depth=1000000`
-
 
 ## Ruby gems
 
@@ -159,7 +158,7 @@ cp config/example.storage.yml config/storage.yml
 
 ## Database setup
 
-`openstreetmap-website` uses three databases -  one for development, one for testing, and one for production. The database-specific configuration
+`openstreetmap-website` uses three databases - one for development, one for testing, and one for production. The database-specific configuration
 options are stored in `config/database.yml`, which we need to create from the example template.
 
 ```
@@ -230,9 +229,9 @@ For simplicity, this document explains how to install all the website dependenci
 
 If you choose to install Ruby and Bundler via `rbenv`, then you do not need to install the system libraries for Ruby:
 
-* For Ubuntu, you do not need to install the following packages: `ruby ruby-dev ruby-bundler`,
-* For Fedora, you do not need to install the following packages: `ruby ruby-devel rubygem-rdoc rubygem-bundler rubygems`
-* For MacOSX, you do not need to `brew install ruby` - but make sure you've installed a version of Ruby using `rbenv` before running `gem install bundler`!
+- For Ubuntu, you do not need to install the following packages: `ruby ruby-dev ruby-bundler`,
+- For Fedora, you do not need to install the following packages: `ruby ruby-devel rubygem-rdoc rubygem-bundler rubygems`
+- For MacOSX, you do not need to `brew install ruby` - but make sure you've installed a version of Ruby using `rbenv` before running `gem install bundler`!
 
 After installing a version of Ruby with `rbenv` (the latest stable version is a good place to start), you will need to make that the default. From inside the `openstreetmap-website` directory, run:
 
