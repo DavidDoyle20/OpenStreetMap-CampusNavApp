@@ -97,9 +97,9 @@
   integrity sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==
 
 "@stylistic/eslint-plugin-js@^4.0.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@stylistic/eslint-plugin-js/-/eslint-plugin-js-4.1.0.tgz#cb3fcc6bef022f1af8245a6cda404d290358c260"
-  integrity sha512-YOe+dChNoR26JVVt+7BjyebsPIQF05OLNmHCXivq8lLZ4ZeVs4+wXaW+pREVboDiAaSRznauAdAU8f+iQouw6Q==
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@stylistic/eslint-plugin-js/-/eslint-plugin-js-4.4.0.tgz#896e256fe396cc4dcece3825420684dc3df7519d"
+  integrity sha512-UeeQNRF73zJXnNGGbvwgUgzS+vzVGQoRuQKR6RhQCRHQmaBaVHxDDQVmN9RPLCnRxVjO/v8cqq/yMDqC7DikSQ==
   dependencies:
     eslint-visitor-keys "^4.2.0"
     espree "^10.3.0"
